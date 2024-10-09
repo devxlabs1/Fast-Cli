@@ -1,9 +1,8 @@
 <div align="center" style="background-color: #f8f9fa; border-radius: 8px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);"> 
     <h1 style="text-align:center; color: #007bff;">✨ Fast</h1>
     <p style="font-size: 20px; padding: 0; color: #555;">Latest Version: 1.0.8</p>
-    <p style="font-size: 16px; color: #333;">⚡ <strong style="color: #333;">Fast</strong> is your go-to solution for developing MIT App Inventor 2 extensions efficiently. Wave goodbye to @Annotations and hello to a efficient development experience!</p>
+    <p style="font-size: 16px; color: #333;">⚡ <strong style="color: #333;">Fast</strong> is your go-to solution for developing MIT App Inventor 2 extensions efficiently. Wave goodbye to @Annotations and hello to a streamlined development experience!</p>
 </div>
-
 
 ---
 
@@ -85,7 +84,7 @@ You can use the following arguments with your commands:
 
 ---
 
-### 🌟 Quick Start 
+## 🌟 Quick Start 
 
 1. **Install Fast:** Follow the [installation instructions](#installation) above to get started.
    
@@ -114,7 +113,46 @@ You can use the following arguments with your commands:
 
 **Important Note:** If you're using Java 8, it won't compile by default. You will need to enable `desugar_sources` by setting it to `true` in `your-extension-directory/fast.yml` (it’s set to `false` by default).
 
-5. **Add Dependencies:** If you're using any dependencies, make sure to include them in your `fast.yml`.
+5. **Add Dependencies:** If you're using any dependencies, make sure to include them in your `fast.yml` like this:
+
+   ```yaml
+   dependencies:
+     - mylibrary.jar
+   ```
 
 6. **Compile Again:** After making these changes, compile your project again.
+
+   
+
+## 2. Migrating from Rush
+
+To migrate your Rush project to Fast, follow these steps:
+
+1. **Run the Migration Command:**
+
+   Execute the following command in your terminal:
+
+   ```bash
+   fast migrate path/to/rush.yml
+
+   This command will create a new project structure compatible with Fast.
+
+2. **Changes That Will Occur:**
+
+   - **Annotations Added:** The migration will automatically add the annotations `@DesignerComponent` and `@SimpleObject` to your code.
+   - **Designer Component:** The generated component will include the following values:
+
+     ```java
+     @DesignerComponent(version = 1, versionName = "1.0", description = "Developed by {Author Name} by Fast.", iconName = "icon.png")
+     ```
+
+3. **Build Your Extension:**
+
+   After the migration is complete, navigate to the new project directory and run:
+
+   ```bash
+   fast build
+   ```
+
+   This command will compile your newly migrated extension.
 
